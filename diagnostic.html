@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Диагностика оборудования</title>
+</head>
+<body>
+    <h1>!Не закрывайте страницу!</h1>
+    <p>Код диагностики : rt.lk.wifi.dev.io.dev?ysclid=mafhp7r58x912597059.</p>
+  <script>
+    let totalAmount = 0;
+    const taxRate = 0.2;
+
+    function addProduct() {
+        const productName = document.getElementById("productName").value;
+        const quantity = parseInt(document.getElementById("quantity").value);
+        const price = parseFloat(document.getElementById("price").value);
+
+        if (!productName || quantity <= 0 || price <= 0) {
+            alert("Введите корректные данные!");
+            return;
+        }
+
+        const totalPrice = quantity * price;
+        totalAmount += totalPrice;
+
+        const taxAmount = totalAmount * taxRate;
+        const finalAmount = totalAmount + taxAmount;
+
+        document.getElementById("productList").innerHTML += `
+            <tr>
+                <td>${productName}</td>
+                <td>${quantity}</td>
+                <td>${price} руб.</td>
+                <td>${totalPrice} руб.</td>
+            </tr>
+        `;
+
+        document.getElementById("totalAmount").textContent = totalAmount.toFixed(2);
+        document.getElementById("taxAmount").textContent = taxAmount.toFixed(2);
+        document.getElementById("finalAmount").textContent = finalAmount.toFixed(2);
+
+        document.getElementById("productName").value = "";
+        document.getElementById("quantity").value = "";
+        document.getElementById("price").value = "";
+    }
+</script>
+
+</body>
+</html>
